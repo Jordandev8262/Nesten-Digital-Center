@@ -45,8 +45,25 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Ne
 .hover-underline::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--primary);transition:width .25s ease}
 .hover-underline:hover::after{width:100%}
 
-/* Subtle shadow + rounded corners for hero image */
-.hero-illustration{max-width:520px;border-radius:24px;box-shadow:none}
+/* HERO enhanced design */
+header.hero{position:relative;background:linear-gradient(135deg,#304ffe 0%,#3f51b5 45%,#7c3aed 100%);color:#fff}
+header.hero .container{padding-top:4.5rem;padding-bottom:4.5rem}
+.hero-title{font-size:3.25rem;line-height:1.15;color:#fff;font-weight:800}
+@media (max-width: 576px){.hero-title{font-size:2.4rem;line-height:1.2}}
+.hero-subtitle{color:#e5e7eb;max-width:60ch}
+/* Search bar improvements */
+.hero-search{display:flex;align-items:center;gap:.5rem;background:#fff;border-radius:999px;padding:.5rem .5rem;box-shadow:0 12px 32px rgba(2,6,23,.2);width:100%;max-width:720px;z-index:1}
+.hero-search:focus-within{box-shadow:0 16px 36px rgba(59,130,246,.25)}
+.hero-search .hero-input{flex:1;min-width:0;border:none;outline:none;padding:.7rem 1rem;border-radius:999px;background:transparent;color:#111827}
+.hero-search .hero-input::placeholder{color:#9ca3af}
+.hero-search .hero-select{border:none;outline:none;background:#f3f4f6;color:#111827;padding:.7rem 1rem;border-radius:999px;min-width:140px}
+.hero-search .hero-submit{border-radius:999px;padding:.7rem 1.25rem;background:linear-gradient(135deg,#3b82f6,#2563eb);border-color:transparent;box-shadow:0 8px 16px rgba(37,99,235,.3)}
+@media (max-width: 576px){
+  .hero-search{max-width:100%;flex-wrap:wrap}
+  .hero-search .hero-input{flex-basis:100%}
+}
+/* Subtle drop shadow for hero illustration */
+.hero-illustration{max-width:520px;border-radius:24px;box-shadow:0 24px 56px rgba(2,6,23,.25)}
 
 /* Reveal on scroll */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;will-change:opacity,transform}
@@ -209,15 +226,11 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Ne
 body.no-scroll{overflow:hidden}
 
 /* About section heading size */
-#about h3{font-size:2.25rem}
+#about h3{font-size:35px; line-height:1.2; font-weight:700}
+@media (max-width: 576px){ #about h3{ font-size: 30px; line-height: 1.25 } }
 @media (max-width: 576px){ #about h3{ font-size: 2rem } }
 
-.hero .btn.btn-lg{
-    font-size: 0.9rem; /* plus petit sur mobile */
-    padding: 0.5rem 0.9rem; /* compacter la hauteur et la largeur */
-    border-radius: 0.5rem;
-  }
-}
+/* corrected: removed duplicate mobile HERO button block */
 
 /* Navbar mobile tweaks: logo alignment + smaller toggler */
 @media (max-width: 576px){
