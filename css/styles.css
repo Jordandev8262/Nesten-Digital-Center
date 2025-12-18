@@ -46,7 +46,7 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Ne
 .hover-underline:hover::after{width:100%}
 
 /* HERO enhanced design */
-header.hero{position:relative;background:linear-gradient(135deg,#304ffe 0%,#3f51b5 45%,#7c3aed 100%);color:#fff}
+header.hero{position:relative;background:linear-gradient(135deg,#2563eb 0%, #4f46e5 40%, #ec4899 100%);color:#fff}
 header.hero .container{padding-top:4.5rem;padding-bottom:4.5rem}
 .hero-title{font-size:3.25rem;line-height:1.15;color:#fff;font-weight:800}
 @media (max-width: 576px){.hero-title{font-size:2.4rem;line-height:1.2}}
@@ -56,10 +56,18 @@ header.hero .text-muted{color:#e5e7eb!important}
 header.hero .hero-trust, header.hero .hero-trust span, header.hero .hero-trust small{color:#e5e7eb!important}
 header.hero .badge{color:#f3f4f6!important;background:rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.30)!important}
 /* Header (hero) accent color: replace orange with clean cyan/blue */
-header.hero .text-primary{color:#22d3ee!important}
-header.hero .btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb);border-color:transparent}
-header.hero .btn-outline-primary{border-color:#22d3ee;color:#22d3ee}
-header.hero .btn-outline-primary:hover{background:#22d3ee;color:#0b1220;border-color:#22d3ee}
+/* Inscription: soft-card steps — sans fond (transparent), ultra lisible */
+header.hero .soft-card{position:relative;background:transparent!important;border:none!important;border-radius:18px;padding:16px;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
+header.hero .soft-card::before{display:none}
+header.hero .soft-card h5,header.hero .soft-card p,header.hero .soft-card small{color:#e5e7eb!important;text-shadow:0 1px 1px rgba(2,6,23,.45)}
+header.hero .soft-card .text-muted{color:#e5e7eb!important;opacity:.95}
+header.hero .soft-card .list-steps li{color:#f3f4f6}
+header.hero .soft-card .list-steps li span{background:linear-gradient(135deg,#3b82f6,#ec4899);box-shadow:0 8px 16px rgba(17,24,39,.28)}
+header.hero .soft-card .badge{color:#f3f4f6!important;background:transparent!important;border-color:rgba(255,255,255,.22)!important}
+header.hero .text-primary{color:#60a5fa!important}
+header.hero .btn-primary{background:linear-gradient(135deg,#60a5fa,#ec4899);border-color:transparent}
+header.hero .btn-outline-primary{border-color:#60a5fa;color:#60a5fa}
+header.hero .btn-outline-primary:hover{background:#60a5fa;color:#0b1220;border-color:#60a5fa}
 /* Search bar improvements */
 .hero-search{display:flex;align-items:center;gap:.5rem;background:#fff;border-radius:999px;padding:.5rem .5rem;box-shadow:0 12px 32px rgba(2,6,23,.2);width:100%;max-width:720px;z-index:1}
 .hero-search:focus-within{box-shadow:0 16px 36px rgba(59,130,246,.25)}
@@ -72,7 +80,9 @@ header.hero .btn-outline-primary:hover{background:#22d3ee;color:#0b1220;border-c
   .hero-search .hero-input{flex-basis:100%}
 }
 /* Subtle drop shadow for hero illustration */
-.hero-illustration{max-width:520px;border-radius:24px;box-shadow:0 24px 56px rgba(2,6,23,.25)}
+.hero-illustration{max-width:520px}
+/* Header hero illustration: remove rectangle/border and softly blend with background */
+header.hero .hero-illustration{border-radius:0!important;box-shadow:none!important;background:transparent!important;filter:none;mask-image:radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 72%, rgba(0,0,0,0) 100%);-webkit-mask-image:radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 72%, rgba(0,0,0,0) 100%)}
 
 /* Reveal on scroll */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;will-change:opacity,transform}
