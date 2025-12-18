@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscription — Nesten Digital Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="no-scroll">
+  <!-- Preloader (même style que les autres pages) -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-visual">
+        <div class="preloader-spinner"></div>
+      </div>
+      <div class="preloader-text text-muted small mt-2">Chargement…</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR (cohérente avec le site) -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white shadow-sm py-3">
+    <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html#home">
+              <img src="assets/svg/Nesten.png" class="navbar-logo" alt="Logo Nesten Digital Center" loading="lazy">
+            </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link hover-underline" href="index.html#home">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link hover-underline" href="index.html#about">À propos</a></li>
+          <li class="nav-item"><a class="nav-link hover-underline" href="index.html#services">Formations</a></li>
+          <li class="nav-item"><a class="nav-link hover-underline" href="index.html#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link hover-underline" href="blog.html">Blog</a></li>
+        </ul>
+        <a class="btn btn-primary ms-lg-3" href="#inscription">S'inscrire</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO INSCRIPTION (style OpenClassrooms, explication du process) -->
+  <header class="hero position-relative overflow-hidden" id="inscription">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold mb-3">Inscrivez-vous à un <span class="text-primary">parcours IT</span> Nesten Digital Center</h1>
+          <p class="lead text-muted mb-3">Déposez votre candidature en quelques minutes : nous vous recontactons pour valider votre projet, votre niveau et vos disponibilités.</p>
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-3 hero-badges">
+            <span class="badge rounded-pill bg-light text-muted border"><i class="bi bi-clipboard-check text-primary me-1"></i>Dossier évalué sous 48h</span>
+            <span class="badge rounded-pill bg-light text-muted border"><i class="bi bi-calendar-event text-primary me-1"></i>Rentrée chaque mois</span>
+            <span class="badge rounded-pill bg-light text-muted border"><i class="bi bi-credit-card text-primary me-1"></i>Paiement flexible</span>
+          </div>
+          <div class="d-flex flex-column small text-muted">
+            <span><i class="bi bi-shield-check text-success me-1"></i>Vos données restent confidentielles et sécurisées.</span>
+            <span><i class="bi bi-people text-primary me-1"></i>Un conseiller vous accompagne tout au long de l’inscription.</span>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <!-- Carte récap étapes comme sur OpenClassrooms -->
+          <div class="soft-card">
+            <h5 class="fw-semibold mb-3">Les étapes de votre inscription</h5>
+            <ol class="list-steps mb-3">
+              <li><span>1</span> Remplissez le formulaire d’inscription</li>
+              <li><span>2</span> Échange avec un conseiller pédagogique</li>
+              <li><span>3</span> Validation de votre projet & de votre niveau</li>
+              <li><span>4</span> Démarrage de votre parcours en ligne ou en présentiel</li>
+            </ol>
+            <p class="text-muted small mb-0">Bon à savoir : l’inscription n’est pas définitive tant que vous n’avez pas validé votre devis et vos modalités de financement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION FORMULAIRE D'INSCRIPTION COMPLET -->
+  <main class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="soft-card">
+            <h2 class="fw-bold mb-3">Formulaire d’inscription</h2>
+            <p class="text-muted mb-4">Merci de compléter ces informations pour que nous puissions vous orienter vers le bon parcours, comme sur OpenClassrooms : nous regardons votre profil, votre projet professionnel et vos contraintes.</p>
+            <form>
+              <!-- Infos personnelles -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="prenom" class="form-label">Prénom *</label>
+                  <input type="text" class="form-control" id="prenom" placeholder="Ex : Jordan" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="nom" class="form-label">Nom *</label>
+                  <input type="text" class="form-control" id="nom" placeholder="Ex : Sofila" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email *</label>
+                  <input type="email" class="form-control" id="email" placeholder="vous@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="telephone" class="form-label">Téléphone *</label>
+                  <input type="tel" class="form-control" id="telephone" placeholder="Ex : +237 6 00 00 00 00" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="ville" class="form-label">Ville / Pays</label>
+                  <input type="text" class="form-control" id="ville" placeholder="Ex : Yaoundé, Cameroun">
+                </div>
+                <div class="col-md-6">
+                  <label for="format" class="form-label">Format souhaité *</label>
+                  <select id="format" class="form-select" required>
+                    <option value="" selected disabled>Choisissez une option</option>
+                    <option>En ligne</option>
+                    <option>Présentiel</option>
+                    <option>Hybride (en ligne + présentiel)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Parcours visé -->
+              <div class="mb-3">
+                <label class="form-label">Parcours qui vous intéresse *</label>
+                <div class="row g-2">
+                  <div class="col-md-6">
+                    <div class="form-check soft-card mb-2">
+                      <input class="form-check-input" type="radio" name="parcours" id="parcours-dev" required>
+                      <label class="form-check-label" for="parcours-dev">
+                        Développement Web
+                        <span class="d-block text-muted small">HTML, CSS, JavaScript, frameworks…</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check soft-card mb-2">
+                      <input class="form-check-input" type="radio" name="parcours" id="parcours-data">
+                      <label class="form-check-label" for="parcours-data">
+                        Data & IA
+                        <span class="d-block text-muted small">Analyse de données, Python, IA…</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check soft-card mb-2">
+                      <input class="form-check-input" type="radio" name="parcours" id="parcours-cloud">
+                      <label class="form-check-label" for="parcours-cloud">
+                        Cloud & DevOps
+                        <span class="d-block text-muted small">Infrastructure, CI/CD, Kubernetes…</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check soft-card mb-2">
+                      <input class="form-check-input" type="radio" name="parcours" id="parcours-cyber">
+                      <label class="form-check-label" for="parcours-cyber">
+                        Cybersécurité
+                        <span class="d-block text-muted small">Sécurité des systèmes, tests d’intrusion…</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check soft-card mb-2">
+                      <input class="form-check-input" type="radio" name="parcours" id="parcours-bureautique">
+                      <label class="form-check-label" for="parcours-bureautique">
+                        Bureautique
+                        <span class="d-block text-muted small">Pack Office, outils collaboratifs, bonnes pratiques…</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Situation actuelle & projet -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="situation" class="form-label">Votre situation actuelle *</label>
+                  <select id="situation" class="form-select" required>
+                    <option value="" disabled selected>Choisissez une option</option>
+                    <option>Étudiant</option>
+                    <option>En poste</option>
+                    <option>En reconversion</option>
+                    <option>En recherche d’emploi</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="experience" class="form-label">Votre niveau en informatique *</label>
+                  <select id="experience" class="form-select" required>
+                    <option value="" disabled selected>Choisissez une option</option>
+                    <option>Débutant</option>
+                    <option>Intermédiaire</option>
+                    <option>Avancé</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="objectif" class="form-label">Votre objectif principal *</label>
+                <textarea id="objectif" rows="3" class="form-control" placeholder="Ex : Trouver un premier emploi de développeur junior dans 6 à 12 mois." required></textarea>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="disponibilite" class="form-label">Disponibilité par semaine *</label>
+                  <select id="disponibilite" class="form-select" required>
+                    <option value="" disabled selected>Choisissez une option</option>
+                    <option>Moins de 10h</option>
+                    <option>10 à 20h</option>
+                    <option>20 à 30h</option>
+                    <option>Plus de 30h</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="debut" class="form-label">Quand souhaitez-vous commencer ? *</label>
+                  <select id="debut" class="form-select" required>
+                    <option value="" disabled selected>Choisissez une option</option>
+                    <option>Dès que possible</option>
+                    <option>Dans 1 à 3 mois</option>
+                    <option>Dans 3 à 6 mois</option>
+                    <option>Je ne sais pas encore</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Financement -->
+              <div class="mb-3">
+                <label for="financement" class="form-label">Comment pensez-vous financer votre formation ?</label>
+                <select id="financement" class="form-select">
+                  <option value="" disabled selected>Choisissez une option</option>
+                  <option>Financement personnel</option>
+                  <option>Entreprise / Employeur</option>
+                  <option>Organisme de financement / Bourse</option>
+                  <option>Je ne sais pas encore</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div class="mb-3">
+                <label for="message" class="form-label">Précisez votre projet ou vos questions</label>
+                <textarea id="message" rows="3" class="form-control" placeholder="Donnez quelques détails sur votre projet, votre parcours et vos attentes."></textarea>
+              </div>
+
+              <!-- Consentement -->
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="cgu" required>
+                <label class="form-check-label small" for="cgu">
+                  J’accepte d’être contacté(e) par l’équipe Nesten Digital Center au sujet de mon inscription et j’ai lu la politique de confidentialité.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg w-100">Envoyer ma demande d’inscription</button>
+              <p class="text-muted small mt-2 mb-0">En cliquant sur "Envoyer", vous consentez à être recontacté(e) par nos équipes. Vous pouvez vous désinscrire à tout moment.</p>
+            </form>
+          </div>
+        </div>
+
+        <!-- Colonne droite : infos pratiques / mise en avant -->
+        <div class="col-lg-4">
+          <div class="soft-card mb-3">
+            <h5 class="fw-semibold mb-2">Pourquoi Nesten Digital Center ?</h5>
+            <ul class="list-unstyled text-muted small mb-0">
+              <li class="mb-1"><i class="bi bi-check-circle text-success me-1"></i>Apprentissage par projets concrets</li>
+              <li class="mb-1"><i class="bi bi-check-circle text-success me-1"></i>Mentorat par des professionnels</li>
+              <li class="mb-1"><i class="bi bi-check-circle text-success me-1"></i>Parcours flexibles, adaptés à votre rythme</li>
+              <li class="mb-1"><i class="bi bi-check-circle text-success me-1"></i>Accompagnement carrière (CV, LinkedIn, simulations d’entretien)</li>
+            </ul>
+          </div>
+
+          <div class="soft-card mb-3">
+            <h6 class="fw-semibold mb-2">Horaires & format</h6>
+            <p class="text-muted small mb-1">Cours en ligne et en présentiel, en journée, soirée ou weekend.</p>
+            <p class="text-muted small mb-0">Nous adaptons le rythme à votre situation (salarié, étudiant, reconversion…).</p>
+          </div>
+
+          <div class="soft-card">
+            <h6 class="fw-semibold mb-2">Une question avant de vous inscrire ?</h6>
+            <p class="text-muted small mb-2">Contactez un conseiller pour échanger sur votre projet, vos objectifs et vos contraintes.</p>
+            <a href="index.html#contact" class="btn btn-outline-primary btn-sm w-100">Parler à un conseiller</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER repris de index.html -->
+  <footer class="footer pt-5">
+    <div class="container pb-4">
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="d-flex align-items-center mb-3">
+            <span class="brand-icon me-2"></span>
+            <span class="fw-bold">Nesten<span class="text-primary"> Digital Center</span></span>
+          </div>
+          <div class="d-flex gap-2">
+            <a class="social" href="#"><i class="bi bi-facebook"></i></a>
+            <a class="social" href="#"><i class="bi bi-instagram"></i></a>
+            <a class="social" href="#"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h6 class="fw-semibold mb-3">Company</h6>
+          <ul class="list-unstyled text-muted small">
+            <li><a href="index.html#about">À propos</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="#">Équipe</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="fw-semibold mb-3">Designs</h6>
+          <ul class="list-unstyled text-muted small">
+            <li><a href="#">Prototypes</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Guidelines</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="fw-semibold mb-3">Ressources</h6>
+          <ul class="list-unstyled text-muted small">
+            <li><a href="#">Documentation</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#">Affiliés</a></li>
+            <li><a href="#">Admissions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center text-muted small mt-3">© <span id="year"></span> Nesten Digital Center. Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
