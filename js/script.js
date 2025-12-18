@@ -1,24 +1,23 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Preloader logic: fixed display of 4 seconds, then hide overlay
+// Preloader logic: hide overlay once page is loaded
 (function(){
   const preloader = document.getElementById('preloader');
   const body = document.body;
   if(!preloader) return;
-  // Empêche le scroll pendant le préchargement
-  body.classList.add('no-scroll');
 
   function hidePreloader(){
     preloader.classList.add('hidden');
     body.classList.remove('no-scroll');
   }
 
-  const FIXED_DISPLAY_MS = 4000; // 4 secondes
+  const MIN_DISPLAY_MS = 500; // éviter un flash
+  const MAX_TIMEOUT_MS = 8000; // délai de secours
   const start = performance.now();
 
   function attemptHide(){
     const elapsed = performance.now() - start;
-    const delay = Math.max(0, FIXED_DISPLAY_MS - elapsed);
+    const delay = Math.max(0, MIN_DISPLAY_MS - elapsed);
     setTimeout(hidePreloader, delay);
   }
 
@@ -26,8 +25,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
     attemptHide();
   } else {
     window.addEventListener('load', attemptHide, { once: true });
-    // garde-fou au cas où 'load' ne se déclenche pas
-    setTimeout(attemptHide, FIXED_DISPLAY_MS);
+    setTimeout(attemptHide, MAX_TIMEOUT_MS);
   }
 })();
 
