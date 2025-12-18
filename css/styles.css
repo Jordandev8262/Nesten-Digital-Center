@@ -46,7 +46,7 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Ne
 .hover-underline:hover::after{width:100%}
 
 /* Subtle shadow + rounded corners for hero image */
-.hero-illustration{max-width:520px;border-radius:24px;box-shadow:0 20px 40px rgba(16,24,40,.08)}
+.hero-illustration{max-width:520px;border-radius:24px;box-shadow:none}
 
 /* Reveal on scroll */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;will-change:opacity,transform}
@@ -190,6 +190,123 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Ne
     border-radius: 0.5rem;
   }
 }
+// ... existing code ...
+header.hero::after{content:"";position:absolute;left:-10%;top:-6%;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(251,207,232,.22),rgba(251,207,232,0));filter:blur(10px);z-index:0;pointer-events:none}
+@media (max-width: 576px){
+  header.hero .display-5{font-size:2.05rem}
+  header.hero .btn.btn-lg{width:100%}
+  header.hero::after{left:-20%;top:0;width:280px;height:280px;filter:blur(8px)}
+}
+@media (max-width: 992px){
+  .navbar.navbar-open{
+    position: fixed; top: 0; left: 0; right: 0; height: 100vh;
+    background: rgba(17,24,39,.94)!important; backdrop-filter: saturate(160%) blur(8px);
+    border-radius: 0; width: 100%; margin: 0; padding: 1rem 0; z-index: 1060;
+    box-shadow: 0 12px 24px rgba(2,6,23,.28);
+  }
+  .navbar.navbar-open .navbar-collapse{ display: block !important; }
+  .navbar.navbar-open .nav-link{ color: #fff; font-size: 1.1rem; padding: .75rem 1rem; }
+  .navbar.navbar-open .nav-link:hover{ color: #fff; background: rgba(255,106,0,.18); border-radius: .5rem; }
+  .navbar.navbar-open .navbar-brand{ margin-left: .75rem; }
+  .navbar.navbar-open .navbar-toggler{ position: absolute; top: .6rem; right: .75rem; }
+}
+#about h3{font-size:3rem; line-height:1.2; font-weight:700}
+@media (max-width: 576px){ #about h3{ font-size: 2.25rem; line-height: 1.25 } }
+@media (max-width: 992px){ .partner-logos-grid{ grid-template-columns: repeat(3, max-content);} }
+@media (min-width: 992px){ .partner-logos-grid{ grid-template-columns: repeat(5, max-content);} }
+.partner-item { padding: .25rem .5rem; }
+.partner-item:hover { box-shadow: 0 6px 16px rgba(16,24,40,.08); transform: translateY(-2px); }
+.partner-logo { max-height: 40px; width: auto; opacity: .95; transition: opacity .2s ease, transform .2s ease; }
+@media (max-width: 575.98px){ .partner-logo{ max-height: 32px; } }
+.partner-logos { opacity: 0; transform: translateY(8px); }
+.partner-logos.revealed { opacity: 1; transform: translateY(0); transition: .6s ease; }
+/* Accessibility focus */
+.partner-item:focus-within { outline: 2px solid #3b82f6; outline-offset: 2px; }
+.partner-logo:hover { opacity: 1; transform: translateY(-1px); }
+@media (min-width: 768px){ .partner-logo { height: 40px; } }
+
+/* Smooth transition for navbar state */
+.navbar{transition:background .25s ease, box-shadow .25s ease, border-radius .25s ease, margin .25s ease, padding .25s ease}
+
+/* Navbar: appearance when page is scrolled */
+.navbar-scrolled{background:rgba(17,24,39,.85)!important;backdrop-filter:saturate(160%) blur(8px);border-radius:999px;width:calc(100% - 32px);margin:8px auto;padding-top:.5rem;padding-bottom:.5rem;box-shadow:0 8px 24px rgba(2,6,23,.25)}
+.navbar-scrolled .nav-link{color:#e5e7eb}
+.navbar-scrolled .nav-link:hover{color:#fff}
+.navbar-scrolled .nav-link.active{color:#fff;background:rgba(255,106,0,.95);border-radius:999px;padding:.4rem .9rem}
+.navbar-scrolled .navbar-brand{color:#fff}
+.navbar-scrolled .btn-primary{background:var(--primary);border-color:var(--primary)}
+.navbar-scrolled .navbar-toggler{border-color:rgba(255,255,255,.3)}
+.navbar-scrolled .navbar-toggler-icon{filter:invert(1) brightness(1.2)}
+
+/* Projects section */
+.projects-section{background:#fff}
+.projects-collage{min-height:380px}
+.projects-photo-main{width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover}
+.projects-photo-small{position:absolute;left:-12px;bottom:-18px;width:160px;height:110px;object-fit:cover}
+.projects-photo-small-2{position:absolute;right:-12px;top:-18px;width:140px;height:100px;object-fit:cover}
+.projects-decoration{position:absolute;border:2px solid rgba(255,106,0,.35);border-radius:50%}
+.projects-decoration.decor-left{left:-48px;top:12px;width:220px;height:220px}
+.projects-decoration.decor-right{right:-32px;bottom:8px;width:100px;height:100px;border-color:rgba(16,24,40,.2)}
+.projects-info{background:#fff}
+.projects-stats .stat-card{background:#fff;border-radius:16px;box-shadow:0 8px 18px rgba(16,24,40,.06)}
+.projects-stats .stat-value{font-size:1.25rem}
+@media (max-width:991.98px){
+  .projects-photo-small{position:static;width:46%;height:auto;margin-top:.75rem}
+  .projects-photo-small-2{position:static;width:46%;height:auto;margin-left:.5rem}
+  .projects-decoration{display:none}
+}
+
+/* BLOG PAGE */
+.hero-blog {
+  background: linear-gradient(180deg, rgba(17,24,39,0.08), rgba(17,24,39,0));
+}
+.featured-card img { object-fit: cover; height: 280px; }
+@media (min-width: 768px){ .featured-card img { height: 100%; min-height: 320px; } }
+.soft-card { background: #fff; border: 1px solid rgba(17,24,39,.08); border-radius: 16px; padding: 12px; transition: box-shadow .25s ease, transform .25s ease; }
+.soft-card:hover { box-shadow: 0 12px 24px rgba(17,24,39,.12); transform: translateY(-2px); }
+.blog-card h6 { margin-top: 6px; }
+.blog-card img { height: 180px; object-fit: cover; }
+@media (min-width: 992px){ .blog-card img { height: 160px; } }
+.footer .social { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid rgba(17,24,39,.12); color:#111827; }
+.footer .social:hover { background: var(--primary); color:#fff; border-color: transparent; }
+/* Reuse navbar scrolled effect on blog page already declared */
+
+/* HERO buttons responsive */
+@media (max-width: 576px){
+  .hero .btn.btn-lg{
+    font-size: 0.9rem; /* plus petit sur mobile */
+    padding: 0.5rem 0.9rem; /* compacter la hauteur et la largeur */
+    border-radius: 0.5rem;
+  }
+}
+
+/* Navbar mobile tweaks: logo alignment + smaller toggler */
+@media (max-width: 576px){
+  .navbar .navbar-brand{ padding-top: .25rem; padding-bottom: .25rem; }
+  .navbar .navbar-logo{ height: 24px; display: block; margin-top: 1px; }
+  .navbar-scrolled .navbar-logo{ height: 24px; }
+  .navbar .navbar-toggler{ padding: .25rem .45rem; }
+  .navbar .navbar-toggler-icon{ width: 1.1em; height: 1.1em; }
+}
+
+/* Preloader overlay — enlarged spinner like OpenClassrooms */
+.preloader{position:fixed;inset:0;background:#fff;z-index:2000;display:flex;align-items:center;justify-content:center;transition:opacity .35s ease,visibility .35s ease}
+.preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-inner{text-align:center}
+.preloader-spinner{width:64px;height:64px;border-radius:50%;border:5px solid rgba(17,24,39,.14);border-top-color:var(--primary);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+body.no-scroll{overflow:hidden}
+
+/* About section heading size */
+#about h3{font-size:2.25rem}
+@media (max-width: 576px){ #about h3{ font-size: 2rem } }
+
+.hero .btn.btn-lg{
+    font-size: 0.9rem; /* plus petit sur mobile */
+    padding: 0.5rem 0.9rem; /* compacter la hauteur et la largeur */
+    border-radius: 0.5rem;
+  }
+}
 
 /* Navbar mobile tweaks: logo alignment + smaller toggler */
 @media (max-width: 576px){
@@ -290,3 +407,11 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Ne
   .navbar .navbar-toggler{ padding: .25rem .45rem; }
   .navbar .navbar-toggler-icon{ width: 1.1em; height: 1.1em; }
 }
+
+/* Preloader overlay — enlarged spinner like OpenClassrooms */
+.preloader{position:fixed;inset:0;background:#fff;z-index:2000;display:flex;align-items:center;justify-content:center;transition:opacity .35s ease,visibility .35s ease}
+.preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-inner{text-align:center}
+.preloader-spinner{width:64px;height:64px;border-radius:50%;border:5px solid rgba(17,24,39,.14);border-top-color:var(--primary);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+body.no-scroll{overflow:hidden}

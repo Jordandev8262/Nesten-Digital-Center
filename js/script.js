@@ -1,21 +1,33 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Preloader logic: hide overlay once page is loaded
+// Preloader logic: fixed display of 4 seconds, then hide overlay
 (function(){
   const preloader = document.getElementById('preloader');
   const body = document.body;
   if(!preloader) return;
+  // Empêche le scroll pendant le préchargement
+  body.classList.add('no-scroll');
 
   function hidePreloader(){
     preloader.classList.add('hidden');
     body.classList.remove('no-scroll');
   }
 
+  const FIXED_DISPLAY_MS = 4000; // 4 secondes
+  const start = performance.now();
+
+  function attemptHide(){
+    const elapsed = performance.now() - start;
+    const delay = Math.max(0, FIXED_DISPLAY_MS - elapsed);
+    setTimeout(hidePreloader, delay);
+  }
+
   if(document.readyState === 'complete'){
-    // Si tout est déjà chargé
-    setTimeout(hidePreloader, 4000);
+    attemptHide();
   } else {
-    window.addEventListener('load', ()=> setTimeout(hidePreloader, 4000));
+    window.addEventListener('load', attemptHide, { once: true });
+    // garde-fou au cas où 'load' ne se déclenche pas
+    setTimeout(attemptHide, FIXED_DISPLAY_MS);
   }
 })();
 
