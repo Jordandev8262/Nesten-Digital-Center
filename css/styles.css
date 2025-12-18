@@ -51,6 +51,15 @@ header.hero .container{padding-top:4.5rem;padding-bottom:4.5rem}
 .hero-title{font-size:3.25rem;line-height:1.15;color:#fff;font-weight:800}
 @media (max-width: 576px){.hero-title{font-size:2.4rem;line-height:1.2}}
 .hero-subtitle{color:#e5e7eb;max-width:60ch}
+/* Header (hero) text color adjustments for readability on gradient background */
+header.hero .text-muted{color:#e5e7eb!important}
+header.hero .hero-trust, header.hero .hero-trust span, header.hero .hero-trust small{color:#e5e7eb!important}
+header.hero .badge{color:#f3f4f6!important;background:rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.30)!important}
+/* Header (hero) accent color: replace orange with clean cyan/blue */
+header.hero .text-primary{color:#22d3ee!important}
+header.hero .btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb);border-color:transparent}
+header.hero .btn-outline-primary{border-color:#22d3ee;color:#22d3ee}
+header.hero .btn-outline-primary:hover{background:#22d3ee;color:#0b1220;border-color:#22d3ee}
 /* Search bar improvements */
 .hero-search{display:flex;align-items:center;gap:.5rem;background:#fff;border-radius:999px;padding:.5rem .5rem;box-shadow:0 12px 32px rgba(2,6,23,.2);width:100%;max-width:720px;z-index:1}
 .hero-search:focus-within{box-shadow:0 16px 36px rgba(59,130,246,.25)}
