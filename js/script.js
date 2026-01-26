@@ -11,8 +11,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
     body.classList.remove('no-scroll');
   }
 
-  const MIN_DISPLAY_MS = 500; // éviter un flash
-  const MAX_TIMEOUT_MS = 8000; // délai de secours
+  const MIN_DISPLAY_MS = 5000; // Durée minimale de 5 secondes pour l'expérience utilisateur
+  const MAX_TIMEOUT_MS = 10000; // délai de secours augmenté
   const start = performance.now();
 
   function attemptHide(){

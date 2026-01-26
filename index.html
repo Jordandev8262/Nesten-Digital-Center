@@ -16,16 +16,74 @@
 </head>
 <body class="no-scroll">
 
-  <!-- Preloader (style OpenClassrooms-like) -->
-  <div id="preloader" class="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <div class="preloader-visual">
-        <div class="preloader-spinner"></div>
-        
-      </div>
+  
+  <style>
+    /* Preloader full screen */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.3s ease;
+}
 
+/* Logo */
+.preloader-logo {
+  width: 100px;
+  animation: pulse 1.5s infinite;
+}
+
+/* Animation logo pulsation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Points de texte animés */
+.preloader-text .dot {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #0d6efd;
+  animation: blink 1.4s infinite both;
+}
+
+.preloader-text .dot:nth-child(1) { animation-delay: 0s; }
+.preloader-text .dot:nth-child(2) { animation-delay: 0.2s; }
+.preloader-text .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+  </style>
+  <!-- Preloader amélioré -->
+<div id="preloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner d-flex flex-column align-items-center justify-content-center">
+    <!-- Logo animé -->
+    <img src="assets/svg/ENIFMAUP NOIR%.png" alt="Logo Nesten Digital Center" class="preloader-logo mb-3" />
+
+    <!-- Cercle animé -->
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+
+    <!-- Texte animé -->
+    <div class="preloader-text mt-2">
+      <span class="dot">.</span>
+      <span class="dot">.</span>
+      <span class="dot">.</span>
     </div>
   </div>
+</div>
+
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white shadow-sm py-3">
@@ -56,10 +114,11 @@
         <div class="col-lg-6">
           <h1 class="hero-title mb-3">Formez-vous aux métiers de l’<span class="text-primary">informatique</span></h1>
           <p class="hero-subtitle lead mb-3">Développeur web, spécialiste data, expert cloud ou cybersécurité : construisez votre avenir avec des parcours 100% orientés projet.</p>
-          <div class="d-flex flex-wrap align-items-center gap-2 mb-3 hero-badges">
-            <span class="badge rounded-pill bg-light text-muted border"><i class="bi bi-mortarboard text-primary me-1"></i>Parcours certifiants</span>
-            <span class="badge rounded-pill bg-light text-muted border"><i class="bi bi-laptop text-primary me-1"></i>Cours en ligne & présentiel</span>
-            <span class="badge rounded-pill bg-light text-muted border"><i class="bi bi-people text-primary me-1"></i>Mentorat par des pros</span>
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-4 hero-badges">
+            <span class="badge rounded-pill"><i class="bi bi-award-fill me-1"></i>Parcours certifiants</span>
+            <span class="badge rounded-pill"><i class="bi bi-laptop me-1"></i>Cours en ligne & présentiel</span>
+            <span class="badge rounded-pill"><i class="bi bi-people-fill me-1"></i>Mentorat par des pros</span>
+            <span class="badge rounded-pill"><i class="bi bi-briefcase-fill me-1"></i>100% orienté projet</span>
           </div>
           <div class="d-flex flex-wrap gap-3 align-items-center mt-2">
             <a href="#services" class="btn btn-primary btn-lg">Découvrir les formations</a>
@@ -117,18 +176,7 @@
     </div>
   </section>
  <div>
-  <div class="text-center mb-2">
-           <h4 class="fw-bold section-title-sm partners-title">Nos partenaires</h4>
-         </div>
-        <div class="partner-logos-wrap">
-           <!-- Partner logos grid -->
-           <ul class="partner-logos partner-logos-grid revealed" role="list" aria-label="Logos de nos partenaires">
-             <li class="partner-item"><img src="assets/svg/ENIFMAUP%20NOIR%25.png" class="partner-logo" alt="Illustration Process" loading="lazy"></li>
-             <li class="partner-item"><img src="assets/svg/ENIFMAUP%20NOIR%25.png" class="partner-logo" alt="Illustration Hero" loading="lazy"></li>
-             <li class="partner-item"><img src="assets/svg/ENIFMAUP%20NOIR%25.png" class="partner-logo" alt="Photo partenaire" loading="lazy"></li>
-           </ul>
-         </div>
- </div>
+ 
   <!-- PROCESS -->
   <section class="py-5 process-section">
     <div class="container">
@@ -159,13 +207,13 @@
     <div class="container">
       <div class="row align-items-center g-4">
         <div class="col-lg-6">
-          <h3 class="fw-bold">Notre <span class="text-primary">Institut de Formation</span></h3>
+          <h3 class="fw-bold">Notre <span class="text-primary" style="font-size: 40px;"><br><span style="font-size: 34px;">Institut de Formation</span></span></h3>
           <p class="text-muted">Notre pédagogie s’appuie sur des projets réels, des mentors et un suivi individualisé.</p>
           <p class="text-muted">Devenez opérationnel en IT grâce à des parcours flexibles et certifiants.</p>
           <a href="#services" class="btn btn-primary">Découvrir les parcours</a>
         </div>
         <div class="col-lg-6 text-center">
-          <img class="w-100 rounded-4 shadow-sm" src="assets/svg/illustration-process.jpg" alt="À propos" />
+          <img class="w-100 rounded-4 shadow-sm" src="assets/svg/illustration-process.PNG" alt="À propos" />
         </div>
       </div>
     </div>
@@ -374,9 +422,7 @@
       <div class="row g-4 align-items-center">
         <div class="col-lg-6">
           <div class="projects-collage position-relative">
-            <img src="assets/Ndoaling.jpg" class="projects-photo-main rounded-4 shadow-sm" alt="Projet — shooting et branding">
-            <img src="assets/svg/illustration-hero.jpg" class="projects-photo-small rounded-3 shadow-sm" alt="Projet — web design">
-            <img src="assets/svg/illustration-about.jpg" class="projects-photo-small-2 rounded-3 shadow-sm" alt="Projet — campagne marketing">
+            <img src="assets/svg/Projets.jpg" class="projects-photo-main rounded-4 shadow-sm" alt="Projet — shooting et branding">
             <span class="projects-decoration decor-left"></span>
             <span class="projects-decoration decor-right"></span>
           </div>
@@ -454,22 +500,22 @@
               <li class="d-flex align-items-start py-2 border-bottom">
                 <div class="icon-box bg-primary-subtle text-primary me-2"><i class="bi bi-geo-alt"></i></div>
                 <div>
-                  <div class="fw-semibold">Campus</div>
-                  <small class="text-muted">Jalan Cempaka Wangi No 22, Jakarta - Indonesia</small>
+                  <div class="fw-semibold">Kinshasa, DRC</div>
+                  <small class="text-muted">Kinshasa</small>
                 </div>
               </li>
               <li class="d-flex align-items-start py-2 border-bottom">
                 <div class="icon-box bg-primary-subtle text-primary me-2"><i class="bi bi-envelope"></i></div>
                 <div>
                   <div class="fw-semibold">Email</div>
-                  <small class="text-muted">support@yourdomain.tld<br/>hello@yourdomain.tld</small>
+                  <small class="text-muted">nesten@gmail.com<br/>assistnesten@gmail.com</small>
                 </div>
               </li>
               <li class="d-flex align-items-start py-2">
                 <div class="icon-box bg-primary-subtle text-primary me-2"><i class="bi bi-telephone"></i></div>
                 <div>
                   <div class="fw-semibold">Téléphone</div>
-                  <small class="text-muted">+6221.2000.2012<br/>+6221.2002.2013 (Fax)</small>
+                  <small class="text-muted">+243 982 345 963<br/>+243 826 245 169(Fax)</small>
                 </div>
               </li>
             </ul>
@@ -570,5 +616,29 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
+  <script>window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    
+    // On enregistre le temps actuel
+    const startTime = Date.now();
+    
+    // Durée minimale en millisecondes (ici 5000 ms = 5 sec)
+    const minDuration = 5000;
+    
+    // Calcul du temps écoulé depuis le début
+    const elapsed = Date.now() - startTime;
+  
+    // Attendre soit le temps restant, soit 0 si déjà dépassé
+    const delay = Math.max(minDuration - elapsed, 0);
+  
+    setTimeout(() => {
+      preloader.style.opacity = "0";
+      setTimeout(() => {
+        preloader.style.display = "none";
+        document.body.classList.remove("no-scroll");
+      }, 500); // temps pour la disparition en douceur
+    }, delay);
+  });
+  </script>
 </body>
 </html>

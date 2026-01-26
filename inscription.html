@@ -12,17 +12,329 @@
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Styles pour le formulaire d'inscription professionnel */
+    .form-container {
+      padding: 2.5rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.08);
+    }
+
+    .form-header {
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 1.5rem;
+    }
+
+    .form-header h2 {
+      font-size: 2rem;
+      color: #1f2937;
+      font-weight: 800;
+    }
+
+    /* Indicateur de progression */
+    .form-progress {
+      margin: 2rem 0;
+    }
+
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .progress-steps::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #e5e7eb;
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #9ca3af;
+      transition: all .3s ease;
+      margin-bottom: .5rem;
+    }
+
+    .step.active .step-number {
+      background: var(--gradient-primary);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(255,106,0,.3);
+      transform: scale(1.1);
+    }
+
+    .step.completed .step-number {
+      background: #10b981;
+      border-color: #10b981;
+      color: #fff;
+    }
+
+    .step-label {
+      font-size: .875rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    .step.active .step-label {
+      color: var(--primary);
+    }
+
+    /* Sections du formulaire */
+    .form-section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .form-section:last-child {
+      border-bottom: none;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: #6b7280;
+    }
+
+    /* Champs de formulaire améliorés */
+    .form-label {
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: .75rem;
+      font-size: .95rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-control-lg,
+    .form-select-lg {
+      padding: .875rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
+      transition: all .3s ease;
+    }
+
+    .form-control-lg:focus,
+    .form-select-lg:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(255,106,0,.1);
+      outline: none;
+    }
+
+    .form-control-lg.is-invalid,
+    .form-select-lg.is-invalid {
+      border-color: #ef4444;
+    }
+
+    .form-control-lg.is-valid,
+    .form-select-lg.is-valid {
+      border-color: #10b981;
+    }
+
+    .invalid-feedback {
+      display: block;
+      color: #ef4444;
+      font-size: .875rem;
+      margin-top: .5rem;
+    }
+
+    .form-text {
+      font-size: .875rem;
+      color: #6b7280;
+      margin-top: .5rem;
+    }
+
+    /* Cartes de parcours */
+    .parcours-card {
+      position: relative;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 0;
+      transition: all .3s ease;
+      cursor: pointer;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .parcours-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(255,106,0,.15);
+    }
+
+    .parcours-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .parcours-card input[type="radio"]:checked + .parcours-label {
+      background: rgba(255,106,0,.05);
+      border-color: var(--primary);
+    }
+
+    .parcours-card input[type="radio"]:checked + .parcours-label .parcours-icon {
+      background: var(--gradient-primary);
+      transform: scale(1.1);
+      box-shadow: 0 4px 16px rgba(255,106,0,.3);
+    }
+
+    .parcours-card input[type="radio"]:checked + .parcours-label .parcours-title {
+      color: var(--primary);
+    }
+
+    .parcours-label {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem;
+      cursor: pointer;
+      margin: 0;
+      transition: all .3s ease;
+    }
+
+    .parcours-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: var(--gradient-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .parcours-content {
+      flex: 1;
+    }
+
+    .parcours-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: .25rem;
+    }
+
+    .parcours-desc {
+      font-size: .875rem;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    /* Box de consentement */
+    .consent-box {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .consent-box .form-check-label {
+      font-size: .9rem;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    /* Bouton de soumission */
+    .submit-btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: all .3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,106,0,.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Message de succès */
+    #successMessage {
+      border-radius: 12px;
+      padding: 1.25rem;
+      border: none;
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 1.5rem;
+      }
+
+      .progress-steps {
+        padding: 0 1rem;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: .9rem;
+      }
+
+      .step-label {
+        font-size: .75rem;
+      }
+
+      .section-title {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
 </head>
 <body class="no-scroll">
-  <!-- Preloader (même style que les autres pages) -->
-  <div id="preloader" class="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <div class="preloader-visual">
-        <div class="preloader-spinner"></div>
-      </div>
 
-    </div>
-  </div>
 
   <!-- NAVBAR (cohérente avec le site) -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white shadow-sm py-3">
@@ -89,49 +401,86 @@
           <div class="soft-card">
             <h2 class="fw-bold mb-3">Formulaire d’inscription</h2>
             <p class="text-muted mb-4">Merci de compléter ces informations pour que nous puissions vous orienter vers le bon parcours, comme sur OpenClassrooms : nous regardons votre profil, votre projet professionnel et vos contraintes.</p>
-            <form>
-              <!-- Infos personnelles -->
-              <div class="row g-3 mb-3">
-                <div class="col-md-6">
-                  <label for="prenom" class="form-label">Prénom *</label>
-                  <input type="text" class="form-control" id="prenom" placeholder="Ex : Jordan" required>
+            <form id="inscriptionForm" novalidate>
+              <!-- Section 1: Informations personnelles -->
+              <div class="form-section" data-section="1">
+                <div class="section-header mb-4">
+                  <h3 class="section-title">
+                    <i class="bi bi-person-circle text-primary me-2"></i>
+                    Informations personnelles
+                  </h3>
+                  <p class="section-subtitle text-muted">Nous avons besoin de vos coordonnées pour vous contacter.</p>
                 </div>
-                <div class="col-md-6">
-                  <label for="nom" class="form-label">Nom *</label>
-                  <input type="text" class="form-control" id="nom" placeholder="Ex : Sofila" required>
+
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label for="prenom" class="form-label">
+                      <i class="bi bi-person me-1"></i>Prénom <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control form-control-lg" id="prenom" placeholder="Ex : Jordan" required>
+                    <div class="invalid-feedback">Veuillez entrer votre prénom.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="nom" class="form-label">
+                      <i class="bi bi-person-badge me-1"></i>Nom <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control form-control-lg" id="nom" placeholder="Ex : Sofila" required>
+                    <div class="invalid-feedback">Veuillez entrer votre nom.</div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">
+                      <i class="bi bi-envelope me-1"></i>Email <span class="text-danger">*</span>
+                    </label>
+                    <input type="email" class="form-control form-control-lg" id="email" placeholder="vous@example.com" required>
+                    <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
+                    <div class="form-text">Nous vous enverrons un email de confirmation.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="telephone" class="form-label">
+                      <i class="bi bi-telephone me-1"></i>Téléphone <span class="text-danger">*</span>
+                    </label>
+                    <input type="tel" class="form-control form-control-lg" id="telephone" placeholder="Ex : +243 982 345 963" required>
+                    <div class="invalid-feedback">Veuillez entrer un numéro de téléphone valide.</div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label for="ville" class="form-label">
+                      <i class="bi bi-geo-alt me-1"></i>Ville / Pays
+                    </label>
+                    <input type="text" class="form-control form-control-lg" id="ville" placeholder="Ex : Kinshasa, RDC">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="format" class="form-label">
+                      <i class="bi bi-laptop me-1"></i>Format souhaité <span class="text-danger">*</span>
+                    </label>
+                    <select id="format" class="form-select form-select-lg" required>
+                      <option value="" selected disabled>Choisissez une option</option>
+                      <option value="en-ligne">En ligne</option>
+                      <option value="presentiel">Présentiel</option>
+                      <option value="hybride">Hybride (en ligne + présentiel)</option>
+                    </select>
+                    <div class="invalid-feedback">Veuillez sélectionner un format.</div>
+                  </div>
                 </div>
               </div>
 
-              <div class="row g-3 mb-3">
-                <div class="col-md-6">
-                  <label for="email" class="form-label">Email *</label>
-                  <input type="email" class="form-control" id="email" placeholder="vous@example.com" required>
+              <!-- Section 2: Parcours visé -->
+              <div class="form-section" data-section="2">
+                <div class="section-header mb-4">
+                  <h3 class="section-title">
+                    <i class="bi bi-book me-2 text-primary"></i>
+                    Parcours de formation
+                  </h3>
+                  <p class="section-subtitle text-muted">Sélectionnez le parcours qui correspond le mieux à vos objectifs professionnels.</p>
                 </div>
-                <div class="col-md-6">
-                  <label for="telephone" class="form-label">Téléphone *</label>
-                  <input type="tel" class="form-control" id="telephone" placeholder="Ex : +237 6 00 00 00 00" required>
-                </div>
-              </div>
 
-              <div class="row g-3 mb-3">
-                <div class="col-md-6">
-                  <label for="ville" class="form-label">Ville / Pays</label>
-                  <input type="text" class="form-control" id="ville" placeholder="Ex : Kinshasa, République Démocratique du congo">
-                </div>
-                <div class="col-md-6">
-                  <label for="format" class="form-label">Format souhaité *</label>
-                  <select id="format" class="form-select" required>
-                    <option value="" selected disabled>Choisissez une option</option>
-                    <option>En ligne</option>
-                    <option>Présentiel</option>
-                    <option>Hybride (en ligne + présentiel)</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Parcours visé -->
-              <div class="mb-3">
-                <label class="form-label">Parcours qui vous intéresse *</label>
+                <div class="mb-4">
+                  <label class="form-label fw-semibold mb-3">Parcours qui vous intéresse <span class="text-danger">*</span></label>
                 <div class="row g-2">
                   <div class="col-md-6">
                     <div class="form-check soft-card mb-2">
@@ -181,8 +530,17 @@
                 </div>
               </div>
 
-              <!-- Situation actuelle & projet -->
-              <div class="row g-3 mb-3">
+              <!-- Section 3: Situation et projet -->
+              <div class="form-section" data-section="3">
+                <div class="section-header mb-4">
+                  <h3 class="section-title">
+                    <i class="bi bi-briefcase me-2 text-primary"></i>
+                    Votre situation et projet
+                  </h3>
+                  <p class="section-subtitle text-muted">Aidez-nous à mieux comprendre votre profil et vos objectifs.</p>
+                </div>
+
+                <div class="row g-3 mb-4">
                 <div class="col-md-6">
                   <label for="situation" class="form-label">Votre situation actuelle *</label>
                   <select id="situation" class="form-select" required>
@@ -340,5 +698,162 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    // Validation et interactivité du formulaire
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('inscriptionForm');
+      const steps = document.querySelectorAll('.step');
+      const sections = document.querySelectorAll('.form-section');
+      const submitBtn = form.querySelector('.submit-btn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoading = submitBtn.querySelector('.btn-loading');
+      const successMessage = document.getElementById('successMessage');
+
+      // Mise à jour de l'indicateur de progression
+      function updateProgress() {
+        let activeStep = 1;
+        sections.forEach((section, index) => {
+          const inputs = section.querySelectorAll('input[required], select[required], textarea[required]');
+          let allFilled = true;
+          inputs.forEach(input => {
+            if (input.type === 'checkbox' && !input.checked) {
+              allFilled = false;
+            } else if (input.value === '' || input.value === null) {
+              allFilled = false;
+            }
+          });
+          if (allFilled && index + 1 > activeStep) {
+            activeStep = index + 2;
+          }
+        });
+
+        steps.forEach((step, index) => {
+          const stepNum = index + 1;
+          step.classList.remove('active', 'completed');
+          if (stepNum < activeStep) {
+            step.classList.add('completed');
+          } else if (stepNum === activeStep) {
+            step.classList.add('active');
+          }
+        });
+      }
+
+      // Validation en temps réel
+      form.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('blur', function() {
+          validateField(this);
+          updateProgress();
+        });
+
+        field.addEventListener('input', function() {
+          if (this.classList.contains('is-invalid')) {
+            validateField(this);
+          }
+          updateProgress();
+        });
+      });
+
+      // Validation d'un champ
+      function validateField(field) {
+        const value = field.value.trim();
+        const isRequired = field.hasAttribute('required');
+        
+        field.classList.remove('is-valid', 'is-invalid');
+
+        if (isRequired && !value) {
+          field.classList.add('is-invalid');
+          return false;
+        }
+
+        if (field.type === 'email' && value) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            field.classList.add('is-invalid');
+            return false;
+          }
+        }
+
+        if (field.type === 'tel' && value) {
+          const phoneRegex = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
+          if (!phoneRegex.test(value.replace(/\s/g, ''))) {
+            field.classList.add('is-invalid');
+            return false;
+          }
+        }
+
+        if (value) {
+          field.classList.add('is-valid');
+        }
+        return true;
+      }
+
+      // Validation du formulaire complet
+      function validateForm() {
+        let isValid = true;
+        form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+          if (!validateField(field)) {
+            isValid = false;
+          }
+        });
+
+        // Vérifier les radio buttons
+        const parcoursSelected = form.querySelector('input[name="parcours"]:checked');
+        if (!parcoursSelected) {
+          isValid = false;
+          const parcoursError = form.querySelector('.parcours-card').closest('.mb-4').querySelector('.invalid-feedback');
+          if (parcoursError) parcoursError.style.display = 'block';
+        }
+
+        return isValid;
+      }
+
+      // Soumission du formulaire
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (!validateForm()) {
+          form.classList.add('was-validated');
+          const firstInvalid = form.querySelector('.is-invalid');
+          if (firstInvalid) {
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstInvalid.focus();
+          }
+          return;
+        }
+
+        // Afficher le loader
+        submitBtn.disabled = true;
+        btnText.classList.add('d-none');
+        btnLoading.classList.remove('d-none');
+
+        // Simuler l'envoi (remplacer par votre logique d'envoi)
+        setTimeout(() => {
+          successMessage.classList.remove('d-none');
+          form.reset();
+          form.classList.remove('was-validated');
+          form.querySelectorAll('.is-valid, .is-invalid').forEach(f => {
+            f.classList.remove('is-valid', 'is-invalid');
+          });
+
+          // Réinitialiser le bouton
+          submitBtn.disabled = false;
+          btnText.classList.remove('d-none');
+          btnLoading.classList.add('d-none');
+
+          // Scroll vers le message de succès
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          // Réinitialiser la progression
+          steps.forEach(step => {
+            step.classList.remove('active', 'completed');
+          });
+          steps[0].classList.add('active');
+        }, 2000);
+      });
+
+      // Initialiser la progression
+      updateProgress();
+    });
+  </script>
 </body>
 </html>
